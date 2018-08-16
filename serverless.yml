@@ -1,0 +1,16 @@
+service: JamedaBot
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  environment:
+    TOKEN: ${env:TOKEN}
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: find
+          method: post
+          cors: true
