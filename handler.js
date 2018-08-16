@@ -1,39 +1,37 @@
-const axios = require('axios');
-const BASE_URL = `https://api.telegram.org/bot${process.env.TOKEN}`;
+const { getSuggestions, sendReply } = require('./utils');
 
-function hello(event, context, callback) {
+async function hello(event, context, callback) {
   try {
-    const data = ({
-      message: {
-        text,
-        chat: { id: chatId, first_name: firstName }
-      }
-    } = JSON.parse(event.body));
+    const data = JSON.parse(event.body);
 
-    let response = `Please /start, ${firstName}`;
+    const { text } = data.message;
+    const { id: chatId, first_name: firstName } = data.message.chat;
 
-    if (text.toLowerCase().includes('hello')) {
-      response = `Hello, ${firstName}`;
+    console.log(`incoming - ${firstName} wrote "${text}" in #${chatId}`);
+
+    let response;
+
+    // First contact, say hello
+    if (text.toLowerCase().includes('start')) {
+      response = `Hallo, ${firstName}. Was suchst du?`;
     }
 
-    sendReply(response, chatId)
-      .then(() => {
-        callback(null, { statusCode: 200 });
-      })
-      .catch(e => {
-        throw new Error(e);
-      });
-  } catch (e) {
+    // Query for `what` in `where`
+    if (text.toLowerCase().includes(' in ')) {
+      const [what, where] = text.split(' in ');
+
+      const suggestions = await getSuggestions(what, where);
+      response = suggestions.join('\n');
+    }
+
+    // send reply
+    await sendReply(response, chatId);
+
+    // terminate lambda
+    callback(null, { statusCode: 200 });
+  } catch (error) {
     callback(error, { statusCode: 500 });
   }
-}
-
-function sendReply(text, chat_id) {
-  const url = `${BASE_URL}/sendMessage`;
-  return axios.post(url, {
-    text,
-    chat_id
-  });
 }
 
 module.exports = { hello };

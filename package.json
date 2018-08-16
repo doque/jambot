@@ -1,14 +1,22 @@
 {
   "name": "jamedabot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Chatbot showcase",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "sls invoke local -w -f hello --path event.json",
+    "lint": "eslint ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0"
   }
 }

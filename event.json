@@ -49,6 +49,6 @@
     },
     "apiId": "n9kv5aoydc"
   },
-  "body": "{\"update_id\":519390658,\n\"message\":{\"message_id\":11,\"from\":{\"id\":116476053,\"is_bot\":false,\"first_name\":\"Dom\",\"username\":\"doque\",\"language_code\":\"en-DE\"},\"chat\":{\"id\":116476053,\"first_name\":\"Dom\",\"username\":\"doque\",\"type\":\"private\"},\"date\":1534403954,\"text\":\"/start\",\"entities\":[{\"offset\":0,\"length\":6,\"type\":\"bot_command\"}]}}",
+  "body": "{\"update_id\":519390658,\n\"message\":{\"message_id\":11,\"from\":{\"id\":116476053,\"is_bot\":false,\"first_name\":\"Dom\",\"username\":\"doque\",\"language_code\":\"en-DE\"},\"chat\":{\"id\":116476053,\"first_name\":\"Dom\",\"username\":\"doque\",\"type\":\"private\"},\"date\":1534403954,\"text\":\"Orthopäde in Berlin\",\"entities\":[{\"offset\":0,\"length\":6,\"type\":\"bot_command\"}]}}",
   "isBase64Encoded": false
 }
