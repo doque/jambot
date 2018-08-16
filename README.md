@@ -2,6 +2,8 @@
 
 Telegram bot to find doctors in cities using Jameda's public API.
 
+![Jameda Bot architecture](example.png)
+
 ## Setup
 
 1. Get a `TOKEN` from the [@Botfather](https://t.me/Botfather) and export as
